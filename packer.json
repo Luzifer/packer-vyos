@@ -1,5 +1,6 @@
 {
   "variables": {
+    "ami_groups": "all",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_region": "eu-west-1",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
@@ -11,8 +12,9 @@
   "builders": [
     {
       "type": "amazon-ebssurrogate",
-      "ami_name": "Packer VyOS {{user `vyos_version`}}",
+      "ami_name": "Packer-VyOS-{{user `vyos_version`}}",
       "ami_description": "VyOS {{user `vyos_version`}} image build using Packer from official ISO (https://github.com/Luzifer/packer-vyos)",
+      "ami_groups": "{{user `ami_groups`}}",
       "ami_virtualization_type": "hvm",
       "secret_key": "{{user `aws_secret_key`}}",
       "access_key": "{{user `aws_access_key`}}",
